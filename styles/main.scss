@@ -1,5 +1,8 @@
 @import "./loader";
+$blue:#3671e9;
 
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Raleway', sans-serif;
 * {
     margin: 0;
     padding: 0;
@@ -7,5 +10,136 @@
 }
 
 body {
-    background-color: #fff;
+    background-color: #edf1f5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav {
+    width: 100vw;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    // border-bottom: 4px solid #efefef;
+    font-family: 'Raleway', sans-serif;
+    padding: 0 60px;
+
+    .left {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: x-large;
+
+        img {
+            width: 80px;
+            margin-right: 20px;
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        font-size: x-large;
+        padding: 14px 24px;
+        background: $blue;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(.95);
+        }
+
+        &:active {
+            transform: scale(.9);
+        }
+
+        img {
+            width: 24px;
+            margin-right: 14px;
+        }
+    }
+}
+
+.tabs {
+    width: 100vw;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 80px;
+    // border-bottom: 4px solid #efefef;
+    font-family: 'Raleway', sans-serif;
+    padding: 0 20px 0 20px;
+    border-bottom: 2px solid #efefef;
+
+    .block {
+        padding: 10px;
+        padding-bottom: 20px;
+        margin-right: 10px;
+        font-size: large;
+        border-bottom: 2px solid #fff;
+        cursor: pointer;
+
+        &:hover {
+            border-bottom: 2px solid $blue;
+        }
+
+        &:active {
+            border-bottom: 2px solid $blue;
+        }
+    }
+}
+
+.applications {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px 80px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.application {
+    width: 90%;
+    max-width: 360px;
+    background: #fff;
+    padding: 34px;
+    min-height: 380px;
+    border-radius: 16px;
+
+    .subject {
+        width: 100%;
+        font-size: x-large;
+        line-height: 30px;
+        margin-bottom: 2px;
+        min-height: 30px;
+    }
+
+    .name {
+        width: 80%;
+        font-family: 'Raleway', sans-serif;
+        min-height: 30px;
+    }
+
+    .description {
+        font-size: large;
+        margin-top: 10px;
+        line-height: 24px;
+        min-height: 320px;
+    }
+}
+
+.shadow {
+    background: #efefef;
+    border-radius: 4px;
+    filter: blur(1px);
 }
