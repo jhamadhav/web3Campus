@@ -2,7 +2,7 @@
 
 // first block address
 // find it in .\mail-to-address-contract\MailToAddress.json
-const contractAddress = "0x7E4FE738083918408a9fC6EFE6C04007c2d40856";
+const contractAddress = "0x6FeAc5c4D2bcf59A0e705B2119F7967c0d96977C";
 
 // first block abi
 // find it in .\mail-to-address-contract\MailToAddress.json
@@ -42,8 +42,7 @@ let abi = [
             }
         ],
         "stateMutability": "view",
-        "type": "function",
-        "constant": true
+        "type": "function"
     },
     {
         "inputs": [
@@ -62,8 +61,7 @@ let abi = [
             }
         ],
         "stateMutability": "view",
-        "type": "function",
-        "constant": true
+        "type": "function"
     }
 ]
 
