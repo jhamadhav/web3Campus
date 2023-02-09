@@ -100,8 +100,8 @@ const create = async () => {
     console.log(recipients);
     console.log(institute);
     console.log(fileLink);
-    // let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
-    // console.log("application created: ");
+    let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
+    console.log("application created: ");
     endLoad()
 }
 
@@ -218,7 +218,7 @@ const fillView = async (i) => {
 
     let tempMail = []
     for (let j = 0; j < yourApplications[i]["recipients"].length; ++j) {
-        tempMail[i] = await mtaBridge.getRecordByAddress(yourApplications[i]["recipients"][j])
+        tempMail[j] = await mtaBridge.getRecordByAddress(yourApplications[i]["recipients"][j])
     }
     document.getElementById("recipients-out").innerText = tempMail
 
@@ -232,7 +232,9 @@ const fillView = async (i) => {
     let temp = ""
     for (let j = 0; j < arr.length; ++j) {
         let col = (yourApplications[i]["states"][j] == "0") ? "tomato" : "lightGreen"
-        let dis = (yourApplications[i]["edit"] == 1) ? "flex" : "none"
+        let currMail = yourApplications[i]["recipients"][j] == letterProxy.account.address
+
+        let dis = (yourApplications[i]["edit"] == 1 && currMail) ? "flex" : "none"
         temp += `<div class="remark" style="border-left-color:${col}">
             <div class="status">ID: ${tempMail[j]}</div>
             <label for="">Remark:</label>
