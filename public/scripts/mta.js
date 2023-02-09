@@ -83,7 +83,7 @@ const googleSignIn = () => {
             console.log("sign in successful")
             console.log("logging into metamask");
             await connect()
-            window.location = "http://127.0.0.2:5500/index.html"
+            window.location = "https://jhamadhav.com/web3Campus/index.html"
         }).catch((error) = () => {
             console.log(error);
             console.log("sign in successful")
