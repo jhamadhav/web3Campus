@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web3Campus</title>
+
+    <!-- ethers.js -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript" async></script>
+
+    <!-- custom scripts -->
+    <script src="./scripts/loader.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid-random@1.3.2/index.min.js" defer></script>
+    <script src="./scripts/mtaBridge.js" defer></script>
+    <script src="./scripts/letterConfig.js" defer></script>
+    <script src="./scripts/letterProxy.js" defer></script>
+    <script src="./scripts/main.js" defer type="module"></script>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="./styles/main.min.css">
+</head>
+
+<body>
+    <!-- loader start -->
+    <div class="loader-wrapper">
+        <div>
+            <div class="bg"></div>
+            <div class="container">
+                <div class="holder">
+                    <div class="box"></div>
+                </div>
+                <div class="holder">
+                    <div class="box"></div>
+                </div>
+                <div class="holder">
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+        <p>loading...</p>
+    </div>
+    <!-- loader end -->
+
+    <h1>to connect</h1>
+    <button id="connect">connect</button>
+    <br>
+    <br>
+
+    <label for="name">name:</label>
+    <input type="text" id="name-input" autocomplete="on"><br>
+
+    <label for="subject">subject:</label>
+    <input type="text" id="subject-input" autocomplete="on"><br>
+
+    <label for="description">description</label>
+    <input type="text" id="description-input" autocomplete="on"><br>
+
+    <label for="recipients">recipients</label>
+    <input type="text" id="recipients-input" autocomplete="on"><br>
+
+    <label for="institute">institute</label>
+    <input type="text" id="institute-input" autocomplete="on"><br>
+
+    <label for="fileLink">fileLink</label>
+    <input type="file" name="fileList" id="filepicker">
+    <button id="getFileLink">getFileLink</button>
+
+
+    <button id="create">create</button>
+    <br><br>
+    <input type="text" id="by-institute-input" placeholder="by-institute-input">
+    <button id="by-institute-btn">by-institute-btn</button>
+</body>
+
+</html>
