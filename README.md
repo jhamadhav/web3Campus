@@ -3,4 +3,4 @@ Empowering students and faculty with a secure, transparent, and decentralized 'c
 
 # google mail mapping to meta-mask wallet
 
-hosted-link: https://mail-to-address-fireproject.web.app/
+hosted-link: https://mail-to-address-fireproject.web.app
