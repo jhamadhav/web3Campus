@@ -1,24 +1,5 @@
-let mtaContractAddress = "0xE4685732c8Ad9714F08ae45c4BeeFbdb38935276"
+let mtaContractAddress = "0x7E4FE738083918408a9fC6EFE6C04007c2d40856"
 let mtaContractAbi = [
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "string",
-                "name": "email",
-                "type": "string"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "addressID",
-                "type": "address"
-            }
-        ],
-        "name": "onCreateEvent",
-        "type": "event"
-    },
     {
         "inputs": [
             {
@@ -51,6 +32,26 @@ let mtaContractAbi = [
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "add",
+                "type": "address"
+            }
+        ],
+        "name": "getMail",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
             }
         ],
         "stateMutability": "view",
