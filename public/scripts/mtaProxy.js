@@ -46,18 +46,10 @@ class MtaProxy {
             console.log("Connect Your Account to Continue!")
             return []
         }
-
-        const filter = await this.contract.filters.onCreateEvent(
-            email,
-            null
-        );
-
-        const entries = await this.contract.queryFilter(filter)
-
-        return entries.map(entry => ({
-            email,
-            addressID: entry.args.addressID,
-        }));
+        const tx = await this.contract.functions.getAddress(
+            email
+        )
+        return tx[0]
     }
 
     async getRecordByAddress(address) {
@@ -66,17 +58,10 @@ class MtaProxy {
             return []
         }
 
-        const filter = await this.contract.filters.onCreateEvent(
-            null,
+        const tx = await this.contract.functions.getMail(
             address
-        );
-
-        const entries = await this.contract.queryFilter(filter)
-
-        return entries.map(entry => ({
-            email: entry.args.email,
-            address
-        }));
+        )
+        return tx[0]
     }
 
 }

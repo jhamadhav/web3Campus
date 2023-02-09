@@ -2,30 +2,11 @@
 
 // first block address
 // find it in .\mail-to-address-contract\MailToAddress.json
-const contractAddress = "0xE4685732c8Ad9714F08ae45c4BeeFbdb38935276";
+const contractAddress = "0x7E4FE738083918408a9fC6EFE6C04007c2d40856";
 
 // first block abi
 // find it in .\mail-to-address-contract\MailToAddress.json
-const abi = [
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "string",
-                "name": "email",
-                "type": "string"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "addressID",
-                "type": "address"
-            }
-        ],
-        "name": "onCreateEvent",
-        "type": "event"
-    },
+let abi = [
     {
         "inputs": [
             {
@@ -63,6 +44,26 @@ const abi = [
         "stateMutability": "view",
         "type": "function",
         "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "add",
+                "type": "address"
+            }
+        ],
+        "name": "getMail",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
     }
-];
+]
 
