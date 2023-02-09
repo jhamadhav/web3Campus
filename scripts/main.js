@@ -1,6 +1,8 @@
 let letterProxy = null
+let mtaBridge = null
 window.onload = async () => {
     letterProxy = new LetterProxy()
+    mtaBridge = new MtaBridge()
     document.getElementById("connect").addEventListener("click", connect);
 
     document.getElementById("create").addEventListener("click", create);
@@ -13,6 +15,8 @@ const connect = async () => {
     await letterProxy.connect()
     console.log("on connect: account details");
     console.log(letterProxy.account);
+
+    await mtaBridge.connect(letterProxy)
 }
 
 const create = async () => {
@@ -44,6 +48,11 @@ const getAppByInstitute = async () => {
     console.log(res);
 }
 
-const getAddressFromMail = (mail) => {
-
+const getAddressFromMail = async (mail) => {
+    if (mtaBridge == null) {
+        console.log("mta bridge is down !!");
+        return;
+    }
+    let res = await mtaBridge.getRecordByMail(mail);
+    console.log(res);
 }
