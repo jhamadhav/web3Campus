@@ -85,6 +85,12 @@ const create = async () => {
     let description = document.getElementById("description-input").innerText;
     let recipients = document.getElementById("recipients-input").value;
     recipients = recipients.split(",")
+    let tempRecp = []
+    for (let i = 0; i < recipients.length; ++i) {
+        tempRecp.push(await mtaBridge.getRecordByMail(recipients[i]))
+    }
+    console.log(tempRecp);
+    recipients = tempRecp
     let institute = document.getElementById("institute-input").value;
     let fileLink = await getFileLink();
 
@@ -94,8 +100,8 @@ const create = async () => {
     console.log(recipients);
     console.log(institute);
     console.log(fileLink);
-    let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
-    console.log("application created: ");
+    // let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
+    // console.log("application created: ");
     endLoad()
 }
 
@@ -205,11 +211,17 @@ const attachEvent = (yourApplications) => {
         })
     }
 }
-const fillView = (i) => {
+const fillView = async (i) => {
     document.getElementById("name-out").innerText = yourApplications[i]["name"]
     document.getElementById("subject-out").innerText = yourApplications[i]["subject"]
     document.getElementById("description-out").innerText = yourApplications[i]["description"]
-    document.getElementById("recipients-out").innerText = yourApplications[i]["recipients"]
+
+    let tempMail = []
+    for (let j = 0; j < yourApplications[i]["recipients"].length; ++j) {
+        tempMail[i] = await mtaBridge.getRecordByAddress(yourApplications[i]["recipients"][j])
+    }
+    document.getElementById("recipients-out").innerText = tempMail
+
     document.getElementById("institute-out").innerText = yourApplications[i]["institute"]
 
     document.getElementById("file-out").href = yourApplications[i]["file"]
@@ -222,7 +234,7 @@ const fillView = (i) => {
         let col = (yourApplications[i]["states"][j] == "0") ? "tomato" : "lightGreen"
         let dis = (yourApplications[i]["edit"] == 1) ? "flex" : "none"
         temp += `<div class="remark" style="border-left-color:${col}">
-            <div class="status">ID: ${arr[j]}</div>
+            <div class="status">ID: ${tempMail[j]}</div>
             <label for="">Remark:</label>
             <div class="status">${yourApplications[i]["remarks"][j]}</div>
             <button class="edit-btn" style="display:${dis};">edit</button>
