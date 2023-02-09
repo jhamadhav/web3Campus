@@ -107,5 +107,18 @@ class LetterProxy {
         const tx = await this.contract.functions.getApplicationsToAddress()
         return tx[0]
     }
+    async updateRemark(id, status, remark) {
+        if (!this.isConnected) {
+            console.log("Connect Your Account to Continue!")
+            return []
+        }
+        const tx = await this.contract.functions.updateRemark(
+            id,
+            status,
+            remark
+        )
+        const receipt = await tx.wait();
+        console.log(receipt);
+    }
 
 }

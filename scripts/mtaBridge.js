@@ -1,24 +1,5 @@
-let mtaContractAddress = "0xE4685732c8Ad9714F08ae45c4BeeFbdb38935276"
+let mtaContractAddress = "0x7E4FE738083918408a9fC6EFE6C04007c2d40856"
 let mtaContractAbi = [
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "string",
-                "name": "email",
-                "type": "string"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "addressID",
-                "type": "address"
-            }
-        ],
-        "name": "onCreateEvent",
-        "type": "event"
-    },
     {
         "inputs": [
             {
@@ -56,6 +37,26 @@ let mtaContractAbi = [
         "stateMutability": "view",
         "type": "function",
         "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "add",
+                "type": "address"
+            }
+        ],
+        "name": "getMail",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
     }
 ]
 
@@ -78,18 +79,21 @@ class MtaBridge {
             console.log("Connect Your Account to Continue!")
             return []
         }
-
-        const filter = await this.contract.filters.onCreateEvent(
-            email,
-            null
-        );
-
-        const entries = await this.contract.queryFilter(filter)
-
-        return entries.map(entry => ({
-            email,
-            addressID: entry.args.addressID,
-        }));
+        const tx = await this.contract.functions.getAddress(
+            email
+        )
+        return tx[0]
     }
 
+    async getRecordByAddress(address) {
+        if (!this.isConnected) {
+            console.log("Connect Your Account to Continue!")
+            return []
+        }
+
+        const tx = await this.contract.functions.getMail(
+            address
+        )
+        return tx[0]
+    }
 }

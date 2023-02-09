@@ -6,6 +6,8 @@ const token = tokenInput;
 
 let letterProxy = null
 let mtaBridge = null
+let yourApplications = [];
+let currApp = -1
 window.onload = async () => {
     letterProxy = new LetterProxy()
     mtaBridge = new MtaBridge()
@@ -24,9 +26,28 @@ window.onload = async () => {
     }
     document.getElementById("view-close").onclick = () => {
         document.getElementsByClassName("app-view")[0].style.display = "none"
+        currApp = -1
     }
     document.getElementById("create-app-nav").onclick = () => {
         document.getElementsByClassName("app-write")[0].style.display = "flex"
+    }
+    document.getElementById("edit-remark-close").onclick = () => {
+        document.getElementsByClassName("edit-write")[0].style.display = "none"
+    }
+
+    document.getElementById("edit-remark-btn").onclick = async () => {
+        if (currApp == -1) {
+            console.log("invalid cert id");
+            return
+        }
+        startLoad()
+        let status = document.getElementById("edit-status-input").value;
+        let remark = document.getElementById("edit-remark-input").innerText
+        let certID = yourApplications[currApp]["id"]
+        let res = await letterProxy.updateRemark(certID, status, remark)
+        sleep(700)
+        endLoad()
+        document.getElementsByClassName("edit-write")[0].style.display = "none"
     }
     // // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
@@ -68,6 +89,12 @@ const create = async () => {
     let description = document.getElementById("description-input").innerText;
     let recipients = document.getElementById("recipients-input").value;
     recipients = recipients.split(",")
+    let tempRecp = []
+    for (let i = 0; i < recipients.length; ++i) {
+        tempRecp.push(await mtaBridge.getRecordByMail(recipients[i]))
+    }
+    console.log(tempRecp);
+    recipients = tempRecp
     let institute = document.getElementById("institute-input").value;
     let fileLink = await getFileLink();
 
@@ -79,6 +106,7 @@ const create = async () => {
     console.log(fileLink);
     let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
     console.log("application created: ");
+    document.getElementsByClassName("app-write")[0].style.display = "none"
     endLoad()
 }
 
@@ -92,9 +120,18 @@ const getAppByInstitute = async (institute) => {
     await sleep(200)
     endLoad()
 
-    buildCards(res)
+    yourApplications = []
+    let certIDS = []
+    for (let i = res.length - 1; i >= 0; --i) {
+        res[i]["edit"] = 0;
+        if (certIDS.indexOf(res[i]["id"]) == -1) {
+            yourApplications.push(res[i])
+            certIDS.push(res[i]["id"])
+        }
+    }
+    buildCards(yourApplications)
 }
-let yourApplications = [];
+
 const getYourApplication = async () => {
     if (letterProxy == null) return;
     let res = await letterProxy.getApplicationByAddress()
@@ -103,13 +140,20 @@ const getYourApplication = async () => {
     for (let i = 0; i < res.length; ++i) {
         // console.log(res[i]);
         let temp = await letterProxy.getApplicationByID(res[i]);
-        // console.log(temp);
+        console.log(temp);
 
         let data = {}
         data["id"] = temp[0];
         data["name"] = temp[1];
         data["subject"] = temp[2];
         data["description"] = temp[3];
+        data["file"] = temp[4];
+        data["applierAddress"] = temp[5];
+        data["recipients"] = temp[6];
+        data["institute"] = temp[7];
+        data["states"] = temp[8];
+        data["remarks"] = temp[9];
+        data["edit"] = 1;
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -159,4 +203,56 @@ const buildCards = (data) => {
         `
     }
     appContainer.innerHTML = txt
+    attachEvent(yourApplications)
+}
+const attachEvent = (yourApplications) => {
+    let apps = document.getElementsByClassName("application")
+    for (let i = 0; i < apps.length; ++i) {
+        apps[i].addEventListener("click", () => {
+            document.getElementsByClassName("app-view")[0].style.display = "flex"
+
+            fillView(i)
+            currApp = i;
+        })
+    }
+}
+const fillView = async (i) => {
+    document.getElementById("name-out").innerText = yourApplications[i]["name"]
+    document.getElementById("subject-out").innerText = yourApplications[i]["subject"]
+    document.getElementById("description-out").innerText = yourApplications[i]["description"]
+
+    let tempMail = []
+    for (let j = 0; j < yourApplications[i]["recipients"].length; ++j) {
+        tempMail[j] = await mtaBridge.getRecordByAddress(yourApplications[i]["recipients"][j])
+    }
+    document.getElementById("recipients-out").innerText = tempMail
+
+    document.getElementById("institute-out").innerText = yourApplications[i]["institute"]
+
+    document.getElementById("file-out").href = yourApplications[i]["file"]
+
+    let remarks = document.getElementsByClassName("remarks")[0]
+    console.log(yourApplications[i]["recipients"]);
+    let arr = yourApplications[i]["recipients"]
+    let temp = ""
+    for (let j = 0; j < arr.length; ++j) {
+        let col = (yourApplications[i]["states"][j] == "0") ? "tomato" : "lightGreen"
+        let currMail = yourApplications[i]["recipients"][j] == letterProxy.account.address
+
+        let dis = (yourApplications[i]["edit"] == 1 && currMail) ? "flex" : "none"
+        temp += `<div class="remark" style="border-left-color:${col}">
+            <div class="status">ID: ${tempMail[j]}</div>
+            <label for="">Remark:</label>
+            <div class="status">${yourApplications[i]["remarks"][j]}</div>
+            <button class="edit-btn" style="display:${dis};">edit</button>
+        </div>`
+    }
+    remarks.innerHTML = temp
+    let editBtns = document.getElementsByClassName("edit-btn")
+    for (let j = 0; j < editBtns.length; ++j) {
+        editBtns[j].onclick = () => {
+            document.getElementsByClassName("edit-write")[0].style.display = "flex"
+        }
+    }
+
 }
