@@ -10,6 +10,8 @@ window.onload = async () => {
     letterProxy = new LetterProxy()
     mtaBridge = new MtaBridge()
 
+    await connect();
+    await getAppByInstitute("rcoem");
     // document.getElementById("connect").addEventListener("click", connect);
 
     // document.getElementById("create").addEventListener("click", create);
@@ -29,7 +31,9 @@ window.onload = async () => {
     }
     blocks[0].click()
 }
-
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 const connect = async () => {
     if (letterProxy == null) return;
     startLoad()
@@ -38,6 +42,7 @@ const connect = async () => {
     console.log(letterProxy.account);
 
     await mtaBridge.connect(letterProxy)
+    await sleep(400)
     endLoad()
 }
 
@@ -65,14 +70,17 @@ const create = async () => {
     endLoad()
 }
 
-const getAppByInstitute = async () => {
+const getAppByInstitute = async (institute) => {
     if (letterProxy == null) return;
     startLoad()
-    let institute = document.getElementById("by-institute-input").value;
+    // let institute = document.getElementById("by-institute-input").value;
     let res = await letterProxy.getApplicationByInstitute(institute);
     console.log(`get application by institute: ${institute} `);
     console.log(res);
+    await sleep(200)
     endLoad()
+
+    buildCards(res)
 }
 
 const getAddressFromMail = async (mail) => {
@@ -99,4 +107,25 @@ const getFileLink = async () => {
     let link = `https://dweb.link/ipfs/${cid}`
     console.log(link);
     return link
+}
+
+const buildCards = (data) => {
+    let appContainer = document.getElementsByClassName("applications")[0]
+    let txt = ""
+    for (let i = 0; i < data.length; ++i) {
+        txt += `
+        <div class="application">
+            <div class="subject">
+            ${data[i]["subject"]}
+            </div>
+            <div class="name">
+            ${data[i]["name"]}
+            </div>
+            <div class="description">
+            ${data[i]["description"]}
+            </div>
+        </div>
+        `
+    }
+    appContainer.innerHTML = txt
 }
