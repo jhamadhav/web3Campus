@@ -17,9 +17,14 @@ window.onload = async () => {
     document.getElementById("showYour").onclick = async () => {
         await getYourApplication();
     }
-    // document.getElementById("connect").addEventListener("click", connect);
 
-    // document.getElementById("create").addEventListener("click", create);
+    document.getElementById("create").addEventListener("click", create);
+    document.getElementById("close").onclick = () => {
+        document.getElementsByClassName("app-write")[0].style.display = "none"
+    }
+    document.getElementById("create-app-nav").onclick = () => {
+        document.getElementsByClassName("app-write")[0].style.display = "flex"
+    }
     // // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
     // document.getElementById("getFileLink").addEventListener("click", getFileLink)
@@ -57,7 +62,7 @@ const create = async () => {
     startLoad()
     let name = document.getElementById("name-input").value;
     let subject = document.getElementById("subject-input").value;
-    let description = document.getElementById("description-input").value;
+    let description = document.getElementById("description-input").innerText;
     let recipients = document.getElementById("recipients-input").value;
     recipients = recipients.split(",")
     let institute = document.getElementById("institute-input").value;
@@ -70,8 +75,7 @@ const create = async () => {
     console.log(institute);
     console.log(fileLink);
     let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
-    console.log("on create: ");
-    console.log(res);
+    console.log("application created: ");
     endLoad()
 }
 

@@ -27,6 +27,7 @@ body {
     font-family: 'Raleway', sans-serif;
     padding: 0 60px;
 
+
     .left {
         display: flex;
         flex-direction: row;
@@ -65,6 +66,8 @@ body {
             margin-right: 14px;
         }
     }
+
+    z-index: 10;
 }
 
 .tabs {
@@ -119,6 +122,12 @@ body {
     padding: 34px;
     min-height: 380px;
     border-radius: 16px;
+    cursor: pointer;
+    transition-duration: 100ms;
+
+    &:active {
+        transform: scale(.9);
+    }
 
     .subject {
         width: 100%;
@@ -148,4 +157,93 @@ body {
     background: #efefef;
     border-radius: 4px;
     filter: blur(1px);
+}
+
+.app-write {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 98%;
+    max-width: 600px;
+    height: 90%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 20;
+    padding: 60px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding-top: 0;
+    overflow-y: scroll;
+
+    // initially display none
+    display: none;
+
+    label {
+        font-size: large;
+        text-transform: capitalize;
+    }
+
+    h1 {
+        width: 100%;
+        margin-bottom: 20px;
+        font-family: 'Montserrat', sans-serif;
+        border-bottom: 2px solid #efefef;
+        padding-bottom: 10px;
+        padding-top: 30px;
+        position: sticky;
+        top: 0;
+        background: #fff;
+    }
+
+    input,
+    #description-input {
+        padding: 12px 20px;
+        width: 100%;
+        border: 1px solid #262626;
+        border-radius: 8px;
+        outline: none;
+        stroke: none;
+        margin-top: 6px;
+        margin-bottom: 20px;
+        font-size: large;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    input {
+        min-height: 52px;
+    }
+
+    button {
+        outline: none;
+        stroke: none;
+        font-size: x-large;
+        padding: 14px 34px;
+        background: $blue;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+
+        &:hover {
+            transform: scale(.95);
+        }
+
+        &:active {
+            transform: scale(.9);
+        }
+
+        margin-right: 20px;
+    }
+}
+
+#close {
+    background: tomato;
 }

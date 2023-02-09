@@ -59,7 +59,7 @@
         </div>
         <div class="right">
             <img src="./assests/plus.svg" alt="plus sign">
-            <div>Create application</div>
+            <div id="create-app-nav">Create application</div>
         </div>
     </div>
     <div class="tabs">
@@ -71,6 +71,7 @@
         </div>
     </div>
 
+    <!-- where all application will appear -->
     <div class="applications">
 
         <div class="application">
@@ -98,6 +99,37 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- where you will write  -->
+    <div class="app-write">
+        <h1>Create new application</h1>
+        <label>name:</label>
+        <input type="text" id="name-input" autocomplete="on" autofocus placeholder="Your name"><br>
+
+        <label>subject:</label>
+        <input type="text" id="subject-input" autocomplete="on" placeholder="Subject of application"><br>
+
+        <label>description</label>
+        <div type="text" id="description-input" autocomplete="on" placeholder="Description" contentEditable="true">
+            Description
+        </div>
+        <br>
+
+        <label>recipients</label>
+        <input type="text" id="recipients-input" autocomplete="on"
+            placeholder="Email comma separated mails, e.g: a,b,c"><br>
+
+        <label>institute</label>
+        <input type="text" id="institute-input" autocomplete="on" placeholder="Affiliated institute"><br>
+
+        <label>Upload application file</label>
+        <input type="file" name="fileList" id="filepicker">
+
+        <div class="btn-holder">
+            <button id="create">create</button>
+            <button id="close">close</button>
+        </div>
     </div>
 
 </body>
