@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-/* @title title
+/* @title MailToAddress
 * @custom:dev-run-script ./scripts/deploy_with_ethers.ts
 */
 
@@ -10,9 +10,11 @@ contract MailToAddress {
     event onCreateEvent(string indexed email, address indexed addressID);
 
 
-    mapping(string => address) public records;
+    mapping(string => address) private records;
 
     function create(string memory email, address addressID) public {
+        // TODO: make if email already exist in map, it cannot be overwritten
+        // for testing purposes allow this to happen
         records[email] = addressID;
         emit onCreateEvent(email, addressID);
     }
