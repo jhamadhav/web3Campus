@@ -160,7 +160,8 @@ body {
 }
 
 .app-write,
-.app-view {
+.app-view,
+.edit-write {
     position: fixed;
     margin: auto;
     top: 0;
@@ -204,7 +205,8 @@ body {
     }
 
     input,
-    #description-input {
+    #description-input,
+    #edit-remark-input {
         padding: 12px 20px;
         width: 100%;
         border: 1px solid #262626;
@@ -310,6 +312,13 @@ body {
     margin-bottom: 10px;
 }
 
-#view-close {
+#view-close,
+#edit-remark-close {
     background: tomato;
+}
+
+.edit-write {
+    display: flex;
+    height: 60%;
+    display: none;
 }

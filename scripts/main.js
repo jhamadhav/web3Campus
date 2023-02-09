@@ -7,6 +7,7 @@ const token = tokenInput;
 let letterProxy = null
 let mtaBridge = null
 let yourApplications = [];
+let currApp = -1
 window.onload = async () => {
     letterProxy = new LetterProxy()
     mtaBridge = new MtaBridge()
@@ -25,9 +26,24 @@ window.onload = async () => {
     }
     document.getElementById("view-close").onclick = () => {
         document.getElementsByClassName("app-view")[0].style.display = "none"
+        currApp = -1
     }
     document.getElementById("create-app-nav").onclick = () => {
         document.getElementsByClassName("app-write")[0].style.display = "flex"
+    }
+    document.getElementById("edit-remark-close").onclick = () => {
+        document.getElementsByClassName("edit-write")[0].style.display = "none"
+    }
+
+    document.getElementById("edit-remark-btn").onclick = async () => {
+        if (currApp == -1) {
+            console.log("invalid cert id");
+            return
+        }
+        let status = document.getElementById("edit-status-input").value;
+        let remark = document.getElementById("edit-remark-input").innerText
+        let certID = yourApplications[currApp]["id"]
+        let res = await letterProxy.updateRemark(certID, status, remark)
     }
     // // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
@@ -181,6 +197,7 @@ const attachEvent = (yourApplications) => {
             document.getElementsByClassName("app-view")[0].style.display = "flex"
 
             fillView(i)
+            currApp = i;
         })
     }
 }
@@ -208,5 +225,11 @@ const fillView = (i) => {
         </div>`
     }
     remarks.innerHTML = temp
+    let editBtns = document.getElementsByClassName("edit-btn")
+    for (let j = 0; j < editBtns.length; ++j) {
+        editBtns[j].onclick = () => {
+            document.getElementsByClassName("edit-write")[0].style.display = "flex"
+        }
+    }
 
 }
