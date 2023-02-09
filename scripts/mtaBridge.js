@@ -1,4 +1,4 @@
-let mtaContractAddress = "0x7E4FE738083918408a9fC6EFE6C04007c2d40856"
+let mtaContractAddress = "0x6FeAc5c4D2bcf59A0e705B2119F7967c0d96977C"
 let mtaContractAbi = [
     {
         "inputs": [
@@ -35,8 +35,7 @@ let mtaContractAbi = [
             }
         ],
         "stateMutability": "view",
-        "type": "function",
-        "constant": true
+        "type": "function"
     },
     {
         "inputs": [
@@ -55,8 +54,7 @@ let mtaContractAbi = [
             }
         ],
         "stateMutability": "view",
-        "type": "function",
-        "constant": true
+        "type": "function"
     }
 ]
 
