@@ -10,12 +10,24 @@ window.onload = async () => {
     letterProxy = new LetterProxy()
     mtaBridge = new MtaBridge()
 
-    document.getElementById("connect").addEventListener("click", connect);
+    // document.getElementById("connect").addEventListener("click", connect);
 
-    document.getElementById("create").addEventListener("click", create);
-    // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
-    document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
-    document.getElementById("getFileLink").addEventListener("click", getFileLink)
+    // document.getElementById("create").addEventListener("click", create);
+    // // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
+    // document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
+    // document.getElementById("getFileLink").addEventListener("click", getFileLink)
+
+    let blocks = document.getElementsByClassName("block")
+    for (let i = 0; i < blocks.length; ++i) {
+        blocks[i].addEventListener("click", () => {
+            let temp = document.getElementsByClassName("block")
+            for (let j = 0; j < temp.length; ++j) {
+                temp[j].style.borderBottomColor = "white"
+            }
+            temp[i].style.borderBottomColor = "#3671e9"
+        })
+    }
+    blocks[0].click()
 }
 
 const connect = async () => {
