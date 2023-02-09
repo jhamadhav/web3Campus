@@ -189,19 +189,20 @@ const fillView = (i) => {
     document.getElementById("recipients-out").innerText = yourApplications[i]["recipients"]
     document.getElementById("institute-out").innerText = yourApplications[i]["institute"]
 
-    document.getElementById("file-out").href = yourApplications[i]["name"]
+    document.getElementById("file-out").href = yourApplications[i]["file"]
 
     let remarks = document.getElementsByClassName("remarks")[0]
     console.log(yourApplications[i]["recipients"]);
     let arr = yourApplications[i]["recipients"]
     let temp = ""
-    for (let j = 0; j < arr.length; ++i) {
-        //     temp += `<div class="remark">
-        //     <div class="status">ID: ${arr[j]}</div>
-        //     <label for="">Remark:</label>
-        //     <div class="status">${arr[j]}</div>
-        // </div>`
-        console.log(arr[j]);
+    for (let j = 0; j < arr.length; ++j) {
+        let col = (yourApplications[i]["states"][j] == "0") ? "tomato" : "lightGreen"
+        temp += `<div class="remark" style="border-left-color:${col}">
+            <div class="status">ID: ${arr[j]}</div>
+            <label for="">Remark:</label>
+            <div class="status">${yourApplications[i]["remarks"][j]}</div>
+        </div>`
     }
     remarks.innerHTML = temp
+
 }
