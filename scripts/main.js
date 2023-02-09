@@ -22,6 +22,9 @@ window.onload = async () => {
     document.getElementById("close").onclick = () => {
         document.getElementsByClassName("app-write")[0].style.display = "none"
     }
+    document.getElementById("view-close").onclick = () => {
+        document.getElementsByClassName("app-view")[0].style.display = "none"
+    }
     document.getElementById("create-app-nav").onclick = () => {
         document.getElementsByClassName("app-write")[0].style.display = "flex"
     }
