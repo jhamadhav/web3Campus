@@ -124,14 +124,16 @@ body {
         width: 100%;
         font-size: x-large;
         line-height: 30px;
-        margin-bottom: 2px;
+        margin-bottom: 7px;
         min-height: 30px;
+        text-transform: capitalize;
     }
 
     .name {
         width: 80%;
         font-family: 'Raleway', sans-serif;
         min-height: 30px;
+        text-transform: capitalize;
     }
 
     .description {
