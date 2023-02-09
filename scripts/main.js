@@ -95,6 +95,7 @@ const getAppByInstitute = async (institute) => {
 
     yourApplications = []
     for (let i = 0; i < res.length; ++i) {
+        res[i]["edit"] = 0;
         yourApplications.push(res[i])
     }
     buildCards(yourApplications)
@@ -121,6 +122,7 @@ const getYourApplication = async () => {
         data["institute"] = temp[7];
         data["states"] = temp[8];
         data["remarks"] = temp[9];
+        data["edit"] = 1;
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -197,10 +199,12 @@ const fillView = (i) => {
     let temp = ""
     for (let j = 0; j < arr.length; ++j) {
         let col = (yourApplications[i]["states"][j] == "0") ? "tomato" : "lightGreen"
+        let dis = (yourApplications[i]["edit"] == 1) ? "flex" : "none"
         temp += `<div class="remark" style="border-left-color:${col}">
             <div class="status">ID: ${arr[j]}</div>
             <label for="">Remark:</label>
             <div class="status">${yourApplications[i]["remarks"][j]}</div>
+            <button class="edit-btn" style="display:${dis};">edit</button>
         </div>`
     }
     remarks.innerHTML = temp
