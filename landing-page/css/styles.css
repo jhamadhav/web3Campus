@@ -396,9 +396,9 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
-  .grid--centered {
+  /* .grid--centered {
     align-items: center;
-  }
+  } */
 
   .grid-gap--small {
     gap: 8px;
