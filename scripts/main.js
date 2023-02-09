@@ -40,10 +40,14 @@ window.onload = async () => {
             console.log("invalid cert id");
             return
         }
+        startLoad()
         let status = document.getElementById("edit-status-input").value;
         let remark = document.getElementById("edit-remark-input").innerText
         let certID = yourApplications[currApp]["id"]
         let res = await letterProxy.updateRemark(certID, status, remark)
+        sleep(700)
+        endLoad()
+        document.getElementsByClassName("edit-write")[0].style.display = "none"
     }
     // // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
@@ -102,6 +106,7 @@ const create = async () => {
     console.log(fileLink);
     let res = await letterProxy.createApplication(name, subject, description, recipients, institute, fileLink);
     console.log("application created: ");
+    document.getElementsByClassName("app-write")[0].style.display = "none"
     endLoad()
 }
 
