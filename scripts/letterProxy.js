@@ -95,27 +95,39 @@ class LetterProxy {
             return []
         }
 
-        const filter = await this.contract.filters.ApplicationWrite(
-            id,
-            null,
-            null,
-            null
-        );
+        // const filter = await this.contract.filters.ApplicationWrite(
+        //     id,
+        //     null,
+        //     null,
+        //     null
+        // );
 
-        const entries = await this.contract.queryFilter(filter)
+        // const entries = await this.contract.queryFilter(filter)
 
-        return entries.map(entry => ({
-            "id": id,
-            name: entry.args.application.name,
-            subject: entry.args.application.subject,
-            description: entry.args.application.description,
-            file: entry.args.application.file,
-            applierAddress: entry.args.application.applierAddress,
-            recipients: entry.args.application.recipients,
-            institute: entry.args.application.institute,
-            states: entry.args.application.states,
-            remarks: entry.args.application.remarks,
-        }));
+        // return entries.map(entry => ({
+        //     "id": id,
+        //     name: entry.args.application.name,
+        //     subject: entry.args.application.subject,
+        //     description: entry.args.application.description,
+        //     file: entry.args.application.file,
+        //     applierAddress: entry.args.application.applierAddress,
+        //     recipients: entry.args.application.recipients,
+        //     institute: entry.args.application.institute,
+        //     states: entry.args.application.states,
+        //     remarks: entry.args.application.remarks,
+        // }));
+        const tx = await this.contract.functions.getApplication(id)
+        return tx[0]
+    }
+
+    async getApplicationByAddress() {
+        if (!this.isConnected) {
+            console.log("Connect Your Account to Continue!")
+            return []
+        }
+
+        const tx = await this.contract.functions.getApplicationsToAddress()
+        return tx[0]
     }
 
 }

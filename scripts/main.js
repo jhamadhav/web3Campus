@@ -11,7 +11,12 @@ window.onload = async () => {
     mtaBridge = new MtaBridge()
 
     await connect();
-    await getAppByInstitute("rcoem");
+    document.getElementById("showAll").onclick = async () => {
+        await getAppByInstitute("rcoem");
+    }
+    document.getElementById("showYour").onclick = async () => {
+        await getYourApplication();
+    }
     // document.getElementById("connect").addEventListener("click", connect);
 
     // document.getElementById("create").addEventListener("click", create);
@@ -82,7 +87,25 @@ const getAppByInstitute = async (institute) => {
 
     buildCards(res)
 }
+let yourApplications = [];
+const getYourApplication = async () => {
+    if (letterProxy == null) return;
+    let res = await letterProxy.getApplicationByAddress()
+    console.log(res);
+    for (let i = 0; i < res.length; ++i) {
+        console.log(res[i]);
+        let temp = await letterProxy.getApplicationByID(res[i]);
+        console.log(temp);
 
+        let data = {}
+        data["id"] = temp[0];
+        data["name"] = temp[1];
+        data["subject"] = temp[2];
+        data["description"] = temp[3];
+        yourApplications.push(data)
+    }
+    buildCards(yourApplications)
+}
 const getAddressFromMail = async (mail) => {
     if (mtaBridge == null) {
         console.log("mta bridge is down !!");
