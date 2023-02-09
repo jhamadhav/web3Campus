@@ -1,319 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>web3Campus</title>
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" type="image/x-icon" href="./images/android-icon-144x144.png" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"
-      integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ=="
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <!-- Header-->
-    <header class="header">
-      <!-- Top Header -->
-      <div class="header__top">
-        <div class="logo">
-          <img src="images/logo.png" height="70" alt="Croppo brand logo" />
-        </div>
-        <nav>
-          <ul class="list list--inline">
-            <li class="list__item text text--small text--regular text--white">
-              <a href="#about">About</a>
-            </li>
-            <li class="list__item text text--small text--regular">
-              <a href="#contact">Contact</a>
-            </li>
-            <li class="list__item text text--small text--regular">
-              <a href="#tech">Techstack</a>
-            </li>
-          </ul>
-        </nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web3Campus</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="./images/android-icon-144x144.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"
+    integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ=="
+    crossorigin="anonymous"></script>
+
+  <!-- custom scripts -->
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/9.12.1/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/9.12.1/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/9.12.1/firebase-firestore-compat.js"></script>
+  <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  <!-- ethers.js -->
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript" async></script>
+
+  <!-- custom scripts -->
+  <script src="./scripts/mtaConfig.js" defer></script>
+  <script src="./scripts/mtaProxy.js" defer></script>
+  <script src="./scripts/mta.js" defer></script>
+</head>
+
+<body>
+  <!-- Header-->
+  <header class="header">
+    <!-- Top Header -->
+    <div class="header__top">
+      <div class="logo">
+        <img src="images/logo.png" height="70" alt="Croppo brand logo" />
       </div>
-      <!-- Header Body -->
-      <div class="header__body">
-        <div class="grid grid--1x2 grid--centered grid-gap--small">
-          <div class="value-proposition">
-            <!-- <div class="badge-container">
+      <nav>
+        <ul class="list list--inline">
+          <li class="list__item text text--small text--regular text--white">
+            <a href="#about">About</a>
+          </li>
+          <li class="list__item text text--small text--regular">
+            <a href="#contact">Contact</a>
+          </li>
+          <li class="list__item text text--small text--regular">
+            <a href="#tech">Techstack</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Header Body -->
+    <div class="header__body">
+      <div class="grid grid--1x2 grid--centered grid-gap--small">
+        <div class="value-proposition">
+          <!-- <div class="badge-container">
               <span class="badge badge--dark text--small">75% Save</span>
                <span class="text text--small text--regular text--white"
                 >For the Black Friday weekend</span
               >
             </div> -->
-            <h1 class="value-proposition__title">
-              Welcome to nextGen Campus!!
-            </h1>
-            <p class="value-proposition__text text text--small text--regular">
-              Connecting the campus community through secure and efficient
-              communication enabled by decentralized Web3 technology
-            </p>
-            <button class="value-proposition__button btn  btn--accent">
-              <span class="text--standard text--standart">Login!</span>
-              
-            </button>
-          </div>
-          <img
-            src="images/btc-illustration.svg"
-            alt="Bitcoin illustration"
-            class="btc-illustration"
-            data-rellax-horizontal-speed="-2"
-            data-rellax-vertical-scroll-axis="x"
-          />
-        </div>
-      </div>
-      <img
-        class="background-item-1"
-        src="images/background-item-1.svg"
-        alt=""
-      />
-      <img
-        class="background-item-2"
-        src="images/background-item-2.svg"
-        alt=""
-      />
-    </header>
-
-    <!-- Why Crappo -->
-    <section class="why-crappo" id="about">
-      <!-- Why you should choose? -->
-      <div class="grid grid--1x2 grid--centered">
-        <img
-          id="gpu-illustration"
-          src="images/gpu-illustration.svg"
-          alt="Illustration of gpu"
-          data-rellax-speed="3"
-          data-rellax-percentage="0.5"
-        />
-        <div class="banner">
-          <h2 class="banner__title">What is our system?</h2>
-          <p class="banner__text text text--small text--regular text--muted">
-            web3Campus makes drafting formal applications<br />
-            to any college colleagues & superiors <h3 >3x</h3>cheaper. <br /><br />
-            <b>We are Paperless!!!</b>
-            <br />
-            Thus saving our environment.
+          <h1 class="value-proposition__title">
+            Welcome to nextGen Campus!!
+          </h1>
+          <p class="value-proposition__text text text--small text--regular">
+            Connecting the campus community through secure and efficient
+            communication enabled by decentralized Web3 technology
           </p>
-          
-        </div>
-      </div>
-      <img
-        class="background-item-3"
-        src="images/background-item-3.svg"
-        alt=""
-      />
-      <img
-        class="background-item-4"
-        src="images/background-item-4.svg"
-        alt=""
-      />
-      <img
-        class="background-item-5"
-        src="images/background-item-5.svg"
-        alt=""
-      />
-    </section>
+          <button class="value-proposition__button btn  btn--accent" id="sign-in">
+            <span class="text--standard text--standart">Login!</span>
 
-    <!-- Trade securely -->
-    <section class="trade-securely" id="tech">
-      <div class="currencies">
-        <div class="card card--secondary">
-          <!-- <svg class="currency-icon">
+          </button>
+        </div>
+        <img src="images/btc-illustration.svg" alt="Bitcoin illustration" class="btc-illustration"
+          data-rellax-horizontal-speed="-2" data-rellax-vertical-scroll-axis="x" />
+      </div>
+    </div>
+    <img class="background-item-1" src="images/background-item-1.svg" alt="" />
+    <img class="background-item-2" src="images/background-item-2.svg" alt="" />
+  </header>
+
+  <!-- Why Crappo -->
+  <section class="why-crappo" id="about">
+    <!-- Why you should choose? -->
+    <div class="grid grid--1x2 grid--centered">
+      <img id="gpu-illustration" src="images/gpu-illustration.svg" alt="Illustration of gpu" data-rellax-speed="3"
+        data-rellax-percentage="0.5" />
+      <div class="banner">
+        <h2 class="banner__title">What is our system?</h2>
+        <p class="banner__text text text--small text--regular text--muted">
+          web3Campus makes drafting formal applications<br />
+          to any college colleagues & superiors
+        <h3>3x</h3>cheaper. <br /><br />
+        <b>We are Paperless!!!</b>
+        <br />
+        Thus saving our environment.
+        </p>
+
+      </div>
+    </div>
+    <img class="background-item-3" src="images/background-item-3.svg" alt="" />
+    <img class="background-item-4" src="images/background-item-4.svg" alt="" />
+    <img class="background-item-5" src="images/background-item-5.svg" alt="" />
+  </section>
+
+  <!-- Trade securely -->
+  <section class="trade-securely" id="tech">
+    <div class="currencies">
+      <div class="card card--secondary">
+        <!-- <svg class="currency-icon">
             <use xlink:href="images/polygon.webp"></use>
 
           </svg> -->
-          <img src="./images/polygon.webp"  height="130px" alt="" />
-          <div class="card__header">
-            <h3>Polygon</h3>
-            <span class="text text--standart text--medium">MATIC</span>
-          </div>
-          <p class="text text-small text--regular card__text">
-            Polygon is a blockchain platform that enables blockchain networks to
-            connect and scale. It aims to create a multi-chain blockchain
-            ecosystem compatible with Ethereum.
-          </p>
+        <img src="./images/polygon.webp" height="130px" alt="" />
+        <div class="card__header">
+          <h3>Polygon</h3>
+          <span class="text text--standart text--medium">MATIC</span>
         </div>
-        <div class="card card--white">
-          <!-- <svg class="currency-icon">
+        <p class="text text-small text--regular card__text">
+          Polygon is a blockchain platform that enables blockchain networks to
+          connect and scale. It aims to create a multi-chain blockchain
+          ecosystem compatible with Ethereum.
+        </p>
+      </div>
+      <div class="card card--white">
+        <!-- <svg class="currency-icon">
             <use src=""></use>
           </svg> -->
-          <img src="./images/Filecoin.png" alt="" />
-          <div class="card__header">
-            <h3>Filecoin/IPFS</h3>
-            <span class="text text--standart text--medium">FIL</span>
-          </div>
-          <p class="text text-small text--regular card__text">
-            Web3.Storage, a simple interface for developers to store and
-            retrieve data from Filecoin’s decentralized storage network!
-          </p>
+        <img src="./images/Filecoin.png" alt="" />
+        <div class="card__header">
+          <h3>Filecoin/IPFS</h3>
+          <span class="text text--standart text--medium">FIL</span>
         </div>
-        <div class="card card--secondary">
-          <img src="./images/metamask.png"  alt="" />
-          <div class="card__header">
-            <h3>Metamask</h3>
-          </div>
-          <p class="text text-small text--regular card__text">
-            MetaMask is a cryptocurrency wallet that enables users to access the
-            Web 3 ecosystem of decentralized applications (dapps).
-          </p>
-        </div>
-        <div class="card card--white">
-          <img src="./images/firebase.png"  alt="" />
-          <div class="card__header">
-            <h3>FireBase</h3>
-          </div>
-          <p class="text text-small text--regular card__text">
-            Firebase is a tool that provides tracking analytics, reporting and
-            fixing app crashes, creating marketing and product experiment.
-          </p>
-        </div>
-        <div class="card card--secondary">
-          <img src="./images/replit.png"  alt="" />
-          <div class="card__header">
-            <h3>Replit</h3>
-          </div>
-          <p class="text text-small text--regular card__text">
-            Replit being Software as a service allows users to create online
-            projects and write code in many supported languages
-          </p>
-        </div>
-        <div class="card card--white">
-          <img src="./images/truffle.png"  alt="" />
-          <div class="card__header">
-            <h3>Truffle Suite</h3>
-          </div>
-          <p class="text text-small text--regular card__text">
-            Truffle Suite is an ecosystem for Web3 development that consists of
-            Truffle, Ganache, and Drizzle.
-          </p>
-        </div>
+        <p class="text text-small text--regular card__text">
+          Web3.Storage, a simple interface for developers to store and
+          retrieve data from Filecoin’s decentralized storage network!
+        </p>
       </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-      <h2>Take a look at our interface of our software.</h2>
-
-      <div class="grid grid--1x2 grid--centered banner-bottom-margin">
-        <div class="banner banner--left">
-          <h2 class="banner__title">Just a single sign-on!</h2>
-          <p class="banner__text text text--small text--regular text--muted">
-            Get full statistic information about the behaviour of buyers and
-            sellers will help you to make the decision.
-          </p>
-          <button class="btn btn--accent">
-            <span class="text--standart text--medium">Learn More</span>
-          </button>
+      <div class="card card--secondary">
+        <img src="./images/metamask.png" alt="" />
+        <div class="card__header">
+          <h3>Metamask</h3>
         </div>
-        <img src="images/bitcoin-graph.svg" alt="Bitcoin graph" />
+        <p class="text text-small text--regular card__text">
+          MetaMask is a cryptocurrency wallet that enables users to access the
+          Web 3 ecosystem of decentralized applications (dapps).
+        </p>
       </div>
-
-      <div class="grid grid--1x2 grid--centered banner-bottom-margin">
-        <img src="images/statistics.svg" alt="Currency statistics" />
-        <div class="banner">
-          <h2 class="banner__title">Detailed Statistics</h2>
-          <p class="banner__text text text--small text--regular text--muted">
-            View all mining related information in realtime, at any point at any
-            location and decide which polls you want to mine in.
-          </p>
-          <button class="btn btn--accent">
-            <span class="text--standart text--medium">Learn More</span>
-          </button>
+      <div class="card card--white">
+        <img src="./images/firebase.png" alt="" />
+        <div class="card__header">
+          <h3>FireBase</h3>
         </div>
+        <p class="text text-small text--regular card__text">
+          Firebase is a tool that provides tracking analytics, reporting and
+          fixing app crashes, creating marketing and product experiment.
+        </p>
       </div>
-
-      <div class="grid grid--1x2 grid--centered">
-        <div class="banner banner--left">
-          <h2 class="banner__title">
-            Grow your profit and track your investments
-          </h2>
-          <p class="banner__text text text--small text--regular text--muted">
-            Use advanced analytical tools. Clear TradingView charts let you
-            track current and historical profit investments.
-          </p>
-          <button class="btn btn--accent">
-            <span class="text--standart text--medium">Learn More</span>
-          </button>
+      <div class="card card--secondary">
+        <img src="./images/replit.png" alt="" />
+        <div class="card__header">
+          <h3>Replit</h3>
         </div>
-        <img src="images/coin-table.svg" alt="Coin tables" />
+        <p class="text text-small text--regular card__text">
+          Replit being Software as a service allows users to create online
+          projects and write code in many supported languages
+        </p>
       </div>
-
-      <img
-        class="background-item-6"
-        src="images/background-item-6.svg"
-        alt=""
-      />
-      <img
-        class="background-item-7"
-        src="images/background-item-7.svg"
-        alt=""
-      />
-    </section>
-
-    <!-- Start mining -->
-    <section class="start-mining" id="contact">
-      <div class="mining-container">
-        <div class="mining-container__header">
-          <h3 class="mining-container__header__title">Contact us</h3>
-          <p
-            class="mining-container__header__description text text--small text--regular"
-          >
-            Deep dive into your next gen campus that enables you to<br />
-            connect with everyone formally!
-          </p>
+      <div class="card card--white">
+        <img src="./images/truffle.png" alt="" />
+        <div class="card__header">
+          <h3>Truffle Suite</h3>
         </div>
-        <div class="mining-container__subscribe">
-          
-            <button class="value-proposition__button btn  btn--white" onclick="location.href='mailto:harsheetchordiya@gmail.com';">Contact Us</button>
-        </div>
-        <img
-          class="background-item-8"
-          src="images/background-item-8.svg"
-          alt=""
-        />
-        <img
-          class="background-item-9"
-          src="images/background-item-9.svg"
-          alt=""
-        />
+        <p class="text text-small text--regular card__text">
+          Truffle Suite is an ecosystem for Web3 development that consists of
+          Truffle, Ganache, and Drizzle.
+        </p>
       </div>
-      <img
-        class="background-item-10"
-        src="images/background-item-10.svg"
-        alt=""
-      />
-      <img
-        class="background-item-11"
-        src="images/background-item-11.svg"
-        alt=""
-      />
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer__bottom">
-        <div class="love">
-          Made with<span style="font-size: 200%; color: red">&hearts;</span>
-          team-thisDot
-        </div>
-        <div class="footer__bottom__social-media">
-          <a href="https://github.com/jhamadhav/web3Campus"><img src="./images/github_logo.svg"></a>
-        </div>
+  <!-- Features -->
+  <section class="features">
+    <h2>Take a look at our interface of our software.</h2>
+
+    <div class="grid grid--1x2 grid--centered banner-bottom-margin">
+      <div class="banner banner--left">
+        <h2 class="banner__title">Just a single sign-on!</h2>
+        <p class="banner__text text text--small text--regular text--muted">
+          Get full statistic information about the behaviour of buyers and
+          sellers will help you to make the decision.
+        </p>
+        <button class="btn btn--accent">
+          <span class="text--standart text--medium">Learn More</span>
+        </button>
       </div>
-    </footer>
-    <script>
-      new Rellax(".btc-illustration", {
-        horizontal: true,
-      });
-      new Rellax("#gpu-illustration", {
-        horizontal: true,
-      });
-    </script>
-  </body>
+      <img src="images/bitcoin-graph.svg" alt="Bitcoin graph" />
+    </div>
+
+    <div class="grid grid--1x2 grid--centered banner-bottom-margin">
+      <img src="images/statistics.svg" alt="Currency statistics" />
+      <div class="banner">
+        <h2 class="banner__title">Detailed Statistics</h2>
+        <p class="banner__text text text--small text--regular text--muted">
+          View all mining related information in realtime, at any point at any
+          location and decide which polls you want to mine in.
+        </p>
+        <button class="btn btn--accent">
+          <span class="text--standart text--medium">Learn More</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid--1x2 grid--centered">
+      <div class="banner banner--left">
+        <h2 class="banner__title">
+          Grow your profit and track your investments
+        </h2>
+        <p class="banner__text text text--small text--regular text--muted">
+          Use advanced analytical tools. Clear TradingView charts let you
+          track current and historical profit investments.
+        </p>
+        <button class="btn btn--accent">
+          <span class="text--standart text--medium">Learn More</span>
+        </button>
+      </div>
+      <img src="images/coin-table.svg" alt="Coin tables" />
+    </div>
+
+    <img class="background-item-6" src="images/background-item-6.svg" alt="" />
+    <img class="background-item-7" src="images/background-item-7.svg" alt="" />
+  </section>
+
+  <!-- Start mining -->
+  <section class="start-mining" id="contact">
+    <div class="mining-container">
+      <div class="mining-container__header">
+        <h3 class="mining-container__header__title">Contact us</h3>
+        <p class="mining-container__header__description text text--small text--regular">
+          Deep dive into your next gen campus that enables you to<br />
+          connect with everyone formally!
+        </p>
+      </div>
+      <div class="mining-container__subscribe">
+
+        <button class="value-proposition__button btn  btn--white"
+          onclick="location.href='mailto:harsheetchordiya@gmail.com';">Contact Us</button>
+      </div>
+      <img class="background-item-8" src="images/background-item-8.svg" alt="" />
+      <img class="background-item-9" src="images/background-item-9.svg" alt="" />
+    </div>
+    <img class="background-item-10" src="images/background-item-10.svg" alt="" />
+    <img class="background-item-11" src="images/background-item-11.svg" alt="" />
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__bottom">
+      <div class="love">
+        Made with<span style="font-size: 200%; color: red">&hearts;</span>
+        team-thisDot
+      </div>
+      <div class="footer__bottom__social-media">
+        <a href="https://github.com/jhamadhav/web3Campus"><img src="./images/github_logo.svg"></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    new Rellax(".btc-illustration", {
+      horizontal: true,
+    });
+    new Rellax("#gpu-illustration", {
+      horizontal: true,
+    });
+  </script>
+</body>
+
 </html>

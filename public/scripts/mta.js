@@ -2,28 +2,34 @@ let userDetails = null
 let mtaProxy = null
 window.onload = async () => {
     mtaProxy = new MtaProxy()
-    document.getElementById("connect").addEventListener("click", connect);
+    // document.getElementById("connect").addEventListener("click", connect);
 
-    document.getElementById("create").addEventListener("click", create);
-    document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
-    document.getElementById("by-address-btn").addEventListener("click", getMailByAddress);
+    // document.getElementById("create").addEventListener("click", create);
+    // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
+    // document.getElementById("by-address-btn").addEventListener("click", getMailByAddress);
 
     console.log("Firebase loaded")
-    document.getElementById("sign-in").addEventListener("click", googleSignIn)
-    document.getElementById("sign-out").addEventListener("click", signOut)
-    firebase.auth().onAuthStateChanged((user) => {
-        if (!user) {
-            userDetails = undefined
-            console.log("user not signed in")
-            return
-        }
-        userDetails = {
-            "name": user["multiFactor"]["user"]["displayName"],
-            "email": user["multiFactor"]["user"]["email"],
-        }
-        console.log(userDetails)
-        document.getElementById("user-details").innerText = `Hi ${userDetails["name"]} 👋`
+    document.getElementById("sign-in").addEventListener("click", async () => {
+        console.log("hi");
+        googleSignIn()
+
+        console.log("logging into metamask");
+        await connect()
     })
+    // document.getElementById("sign-out").addEventListener("click", signOut)
+    // firebase.auth().onAuthStateChanged((user) => {
+    //     if (!user) {
+    //         userDetails = undefined
+    //         console.log("user not signed in")
+    //         return
+    //     }
+    //     userDetails = {
+    //         "name": user["multiFactor"]["user"]["displayName"],
+    //         "email": user["multiFactor"]["user"]["email"],
+    //     }
+    //     console.log(userDetails)
+    //     document.getElementById("user-details").innerText = `Hi ${userDetails["name"]} 👋`
+    // })
 }
 
 const connect = async () => {
