@@ -110,9 +110,13 @@ const getAppByInstitute = async (institute) => {
     endLoad()
 
     yourApplications = []
-    for (let i = 0; i < res.length; ++i) {
+    let certIDS = []
+    for (let i = res.length - 1; i >= 0; --i) {
         res[i]["edit"] = 0;
-        yourApplications.push(res[i])
+        if (certIDS.indexOf(res[i]["id"]) == -1) {
+            yourApplications.push(res[i])
+            certIDS.push(res[i]["id"])
+        }
     }
     buildCards(yourApplications)
 }
