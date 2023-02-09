@@ -92,10 +92,11 @@ const getYourApplication = async () => {
     if (letterProxy == null) return;
     let res = await letterProxy.getApplicationByAddress()
     console.log(res);
+    yourApplications = []
     for (let i = 0; i < res.length; ++i) {
-        console.log(res[i]);
+        // console.log(res[i]);
         let temp = await letterProxy.getApplicationByID(res[i]);
-        console.log(temp);
+        // console.log(temp);
 
         let data = {}
         data["id"] = temp[0];
