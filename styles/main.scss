@@ -159,7 +159,8 @@ body {
     filter: blur(1px);
 }
 
-.app-write {
+.app-write,
+.app-view {
     position: fixed;
     margin: auto;
     top: 0;
@@ -246,4 +247,60 @@ body {
 
 #close {
     background: tomato;
+}
+
+.app-view {
+    display: flex;
+
+    label {
+        margin-bottom: 4px;
+    }
+
+    div {
+        background: #efefef;
+        padding: 10px;
+        width: 100%;
+        border-radius: 6px;
+        padding-left: 8px;
+        margin-bottom: 20px;
+        font-size: larger;
+    }
+
+    a {
+        padding: 10px 20px;
+        background: #efefef;
+        text-decoration: none;
+        width: auto;
+        color: $blue;
+        font-size: larger;
+        margin-bottom: 20px;
+
+        &:hover {
+            transform: scale(.95);
+        }
+
+        &:active {
+            transform: scale(.9);
+        }
+    }
+}
+
+.remarks {
+    width: 100%;
+    background: #fff;
+}
+
+.remark {
+    width: 100%;
+    background: transparent;
+    border-left: 10px solid tomato;
+    border-left: 10px solid lightgreen;
+
+    div {
+        font-size: large;
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
+
+    margin-bottom: 10px;
 }
