@@ -1,13 +1,21 @@
+import { Web3Storage } from "https://cdn.jsdelivr.net/npm/web3.storage/dist/bundle.esm.min.js";
+
+let tokenInput =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGVFOTE5N0UzZjg4NDVERDZFREI0MjAwMzUyNDkwZGRiNDYwMWI2QjYiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzU4Nzc5Mjk5ODgsIm5hbWUiOiJ0ZW1wIn0.3NRcLALJLP1Noh48GThYaHGkL_CMaMysCNxmQ6l-VKY";
+const token = tokenInput;
+
 let letterProxy = null
 let mtaBridge = null
 window.onload = async () => {
     letterProxy = new LetterProxy()
     mtaBridge = new MtaBridge()
+
     document.getElementById("connect").addEventListener("click", connect);
 
     document.getElementById("create").addEventListener("click", create);
     // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     document.getElementById("by-institute-btn").addEventListener("click", getAppByInstitute);
+    document.getElementById("getFileLink").addEventListener("click", getFileLink)
 }
 
 const connect = async () => {
@@ -28,7 +36,8 @@ const create = async () => {
     let recipients = document.getElementById("recipients-input").value;
     recipients = recipients.split(",")
     let institute = document.getElementById("institute-input").value;
-    let fileLink = document.getElementById("fileLink-input").value;
+    let fileLink = await getFileLink();
+
     console.log(name);
     console.log(subject);
     console.log(description);
@@ -55,4 +64,21 @@ const getAddressFromMail = async (mail) => {
     }
     let res = await mtaBridge.getRecordByMail(mail);
     console.log(res);
+}
+
+const getFileLink = async () => {
+    let client = new Web3Storage({ token });
+    let files = document.getElementById("filepicker").files;
+    console.log("file uploading");
+    let cid = await client.put(files, {
+        onRootCidReady: (localCid) => {
+            console.log(`> 🔑 locally calculated Content ID: ${localCid} `);
+            console.log("> 📡 sending files to web3.storage ");
+        },
+        onStoredChunk: (bytes) =>
+            console.log(`> 🛰 sent ${bytes.toLocaleString()} bytes to web3.storage`),
+    });
+    let link = `https://dweb.link/ipfs/${cid}`
+    console.log(link);
+    return link
 }

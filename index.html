@@ -15,7 +15,7 @@
     <script src="./scripts/mtaBridge.js" defer></script>
     <script src="./scripts/letterConfig.js" defer></script>
     <script src="./scripts/letterProxy.js" defer></script>
-    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/main.js" defer type="module"></script>
 </head>
 
 <body>
@@ -40,7 +40,8 @@
     <input type="text" id="institute-input" autocomplete="on"><br>
 
     <label for="fileLink">fileLink</label>
-    <input type="text" id="fileLink-input" autocomplete="on"><br>
+    <input type="file" name="fileList" id="filepicker">
+    <button id="getFileLink">getFileLink</button>
 
 
     <button id="create">create</button>
