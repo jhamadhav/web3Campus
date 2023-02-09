@@ -1,0 +1,16 @@
+[debug] [2023-02-09T10:15:55.921Z] ----------------------------------------------------------------------
+[debug] [2023-02-09T10:15:55.923Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Madhav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-02-09T10:15:55.924Z] CLI Version:   11.15.0
+[debug] [2023-02-09T10:15:55.924Z] Platform:      win32
+[debug] [2023-02-09T10:15:55.925Z] Node Version:  v16.15.0
+[debug] [2023-02-09T10:15:55.926Z] Time:          Thu Feb 09 2023 15:45:55 GMT+0530 (India Standard Time)
+[debug] [2023-02-09T10:15:55.926Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-09T10:15:56.039Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-09T10:15:56.040Z] > authorizing via signed-in user (jhamadhav28@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2023-02-09T10:15:56.054Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-02-09T10:15:56.054Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-02-09T10:15:56.054Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-02-09T10:15:56.065Z] [hub] writing locator at C:\Users\Madhav\AppData\Local\Temp\hub-mail-to-address-fireproject.json
+[debug] [2023-02-09T10:15:56.114Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/mail-to-address-fireproject/sites 
