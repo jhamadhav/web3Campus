@@ -6,6 +6,7 @@ const token = tokenInput;
 
 let letterProxy = null
 let mtaBridge = null
+let yourApplications = [];
 window.onload = async () => {
     letterProxy = new LetterProxy()
     mtaBridge = new MtaBridge()
@@ -92,9 +93,13 @@ const getAppByInstitute = async (institute) => {
     await sleep(200)
     endLoad()
 
-    buildCards(res)
+    yourApplications = []
+    for (let i = 0; i < res.length; ++i) {
+        yourApplications.push(res[i])
+    }
+    buildCards(yourApplications)
 }
-let yourApplications = [];
+
 const getYourApplication = async () => {
     if (letterProxy == null) return;
     let res = await letterProxy.getApplicationByAddress()
@@ -103,13 +108,19 @@ const getYourApplication = async () => {
     for (let i = 0; i < res.length; ++i) {
         // console.log(res[i]);
         let temp = await letterProxy.getApplicationByID(res[i]);
-        // console.log(temp);
+        console.log(temp);
 
         let data = {}
         data["id"] = temp[0];
         data["name"] = temp[1];
         data["subject"] = temp[2];
         data["description"] = temp[3];
+        data["file"] = temp[4];
+        data["applierAddress"] = temp[5];
+        data["recipients"] = temp[6];
+        data["institute"] = temp[7];
+        data["states"] = temp[8];
+        data["remarks"] = temp[9];
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -159,4 +170,38 @@ const buildCards = (data) => {
         `
     }
     appContainer.innerHTML = txt
+    attachEvent(yourApplications)
+}
+const attachEvent = (yourApplications) => {
+    let apps = document.getElementsByClassName("application")
+    for (let i = 0; i < apps.length; ++i) {
+        apps[i].addEventListener("click", () => {
+            document.getElementsByClassName("app-view")[0].style.display = "flex"
+
+            fillView(i)
+        })
+    }
+}
+const fillView = (i) => {
+    document.getElementById("name-out").innerText = yourApplications[i]["name"]
+    document.getElementById("subject-out").innerText = yourApplications[i]["subject"]
+    document.getElementById("description-out").innerText = yourApplications[i]["description"]
+    document.getElementById("recipients-out").innerText = yourApplications[i]["recipients"]
+    document.getElementById("institute-out").innerText = yourApplications[i]["institute"]
+
+    document.getElementById("file-out").href = yourApplications[i]["name"]
+
+    let remarks = document.getElementsByClassName("remarks")[0]
+    console.log(yourApplications[i]["recipients"]);
+    let arr = yourApplications[i]["recipients"]
+    let temp = ""
+    for (let j = 0; j < arr.length; ++i) {
+        //     temp += `<div class="remark">
+        //     <div class="status">ID: ${arr[j]}</div>
+        //     <label for="">Remark:</label>
+        //     <div class="status">${arr[j]}</div>
+        // </div>`
+        console.log(arr[j]);
+    }
+    remarks.innerHTML = temp
 }

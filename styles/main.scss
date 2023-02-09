@@ -264,6 +264,8 @@ body {
         padding-left: 8px;
         margin-bottom: 20px;
         font-size: larger;
+        word-break: break-all;
+        // overflow: scroll;
     }
 
     a {
@@ -283,6 +285,9 @@ body {
             transform: scale(.9);
         }
     }
+
+    // initially
+    display: none;
 }
 
 .remarks {
