@@ -43,3 +43,7 @@ const getAppByInstitute = async () => {
     console.log(`get application by institute: ${institute} `);
     console.log(res);
 }
+
+const getAddressFromMail = (mail) => {
+
+}
