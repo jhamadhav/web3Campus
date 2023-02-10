@@ -5,9 +5,13 @@ const sleep = (ms) => {
 }
 window.onload = async () => {
     mtaProxy = new MtaProxy()
-    document.getElementById("connect").addEventListener("click", connect);
+    document.getElementById("connect").addEventListener("click", async () => {
+        await connect()
+    });
 
-    document.getElementById("create").addEventListener("click", create);
+    document.getElementById("create").addEventListener("click", async () => {
+        await create()
+    });
     // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-address-btn").addEventListener("click", getMailByAddress);
 
