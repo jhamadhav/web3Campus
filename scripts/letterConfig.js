@@ -2,7 +2,7 @@
 
 // first block address
 // find it in .\mail-to-address-contract\MailToAddress.json
-const contractAddress = "0xEC20bAD9a1eB8fc71d12bFD07A3cfde6c512B53c";
+const contractAddress = "0xAa983f4dFE9E551F888865801de539e46B2223C7";
 
 // first block abi
 // find it in .\mail-to-address-contract\MailToAddress.json
@@ -113,6 +113,72 @@ const abi = [
         "inputs": [
             {
                 "internalType": "string",
+                "name": "id",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "subject",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "internalType": "address[]",
+                "name": "recipients",
+                "type": "address[]"
+            },
+            {
+                "internalType": "string",
+                "name": "institute",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "file",
+                "type": "string"
+            }
+        ],
+        "name": "create",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "id",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "status",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "remark",
+                "type": "string"
+            }
+        ],
+        "name": "updateRemark",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
                 "name": "",
                 "type": "string"
             }
@@ -180,49 +246,6 @@ const abi = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "id",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "name",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "subject",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "description",
-                "type": "string"
-            },
-            {
-                "internalType": "address[]",
-                "name": "recipients",
-                "type": "address[]"
-            },
-            {
-                "internalType": "string",
-                "name": "institute",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "file",
-                "type": "string"
-            }
-        ],
-        "name": "create",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -320,29 +343,6 @@ const abi = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "id",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "status",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "remark",
-                "type": "string"
-            }
-        ],
-        "name": "updateRemark",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     }
 ]

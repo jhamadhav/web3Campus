@@ -2,7 +2,7 @@
 
 // first block address
 // find it in .\mail-to-address-contract\MailToAddress.json
-const contractAddress = "0x6FeAc5c4D2bcf59A0e705B2119F7967c0d96977C";
+const contractAddress = "0x7Da9DF61364B0c497DE7D3C6826c17cAD4296D8e";
 
 // first block abi
 // find it in .\mail-to-address-contract\MailToAddress.json

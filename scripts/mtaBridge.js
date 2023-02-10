@@ -1,4 +1,4 @@
-let mtaContractAddress = "0x6FeAc5c4D2bcf59A0e705B2119F7967c0d96977C"
+let mtaContractAddress = "0x7Da9DF61364B0c497DE7D3C6826c17cAD4296D8e"
 let mtaContractAbi = [
     {
         "inputs": [
