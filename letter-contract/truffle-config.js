@@ -10,7 +10,7 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     }, matic: {
       provider: () =>
-        new HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com/`),
+        new HDWalletProvider(mnemonic, `https://polygon-mumbai.g.alchemy.com/v2/5tsUoxKQI8SDorSD9o3_XtZA_SF4khsT`),
       network_id: 80001,
       confirmations: 2,
       timeoutBlocks: 200,
