@@ -10,7 +10,8 @@
   --color-white: #ffffff;
   --color-light-bg-left: #f8f9fb;
   --color-light-bg-right: #fafbff;
-  --color-grey-7: #fbfcfe;;
+  --color-grey-7: #fbfcfe;
+  ;
   --color-grey-6: #f2f2f2;
   --color-grey-5: #e0e0e0;
   --color-grey-4: #bdbdbd;
@@ -26,7 +27,8 @@
 ::-webkit-scrollbar {
   width: 10px;
 }
-a:visited{
+
+a:visited {
   color: white;
 }
 
@@ -62,7 +64,8 @@ body {
 img {
   width: 100%;
 }
-.currencies img{
+
+.currencies img {
   max-width: 65%;
   max-height: 50%;
 }
@@ -135,6 +138,7 @@ h3 {
 .text--muted {
   color: var(--color-grey-6);
 }
+
 .text--grey {
   color: var(--color-grey-3);
 }
@@ -159,9 +163,11 @@ h3 {
   h2 {
     font-size: 3.8rem;
   }
+
   h3 {
     font-size: 3.2rem;
   }
+
   .title {
     font-size: 3.2rem;
   }
@@ -355,7 +361,7 @@ a {
   max-height: 400px;
 }
 
-.card > .currency-icon {
+.card>.currency-icon {
   margin-bottom: 4.8rem;
 }
 
@@ -366,7 +372,7 @@ a {
   margin-bottom: 1.6rem;
 }
 
-.card__header > h3 {
+.card__header>h3 {
   display: inline;
   margin-right: 0.8rem;
 }
@@ -461,7 +467,7 @@ a {
   margin-right: 5.6rem;
 }
 
-.header__top > nav {
+.header__top>nav {
   display: none;
 }
 
@@ -489,7 +495,7 @@ a {
     margin-bottom: 5.1rem;
   }
 
-  .header__top > nav {
+  .header__top>nav {
     display: flex;
     align-items: center;
   }
@@ -523,6 +529,7 @@ a {
   .header__body {
     text-align: start;
   }
+
   .value-proposition__title {
     width: 14ch;
   }
@@ -533,6 +540,7 @@ a {
 
   .value-proposition__button {
     width: 23rem;
+    margin: 10px;
   }
 }
 
@@ -610,6 +618,7 @@ a {
   .why-crappo {
     padding: 10rem 12rem 10rem;
   }
+
   .media-container {
     display: flex;
     justify-content: space-between;
@@ -641,9 +650,9 @@ a {
   /* background-image: -webkit-linear-gradient(top, var(--color-primary) 0%, var(--color-primary) 30%, var(--color-light-bg-left) 15%, var(--color-light-bg-left) 100%); */
   /* background-image: -webkit-linear-gradient(bottom , var(--color-primary) 0%, var(--color-primary) 30%, var(--color-light-bg-left) 15%, var(--color-light-bg-left) 100%); */
   background-image: url("../images/bg_for_tech.jpg");
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 
-   background-size:cover;
+  background-size: cover;
   text-align: center;
   position: relative;
 }
@@ -652,7 +661,7 @@ a {
   margin-bottom: 2.4rem;
 }
 
-.trade-securely > p {
+.trade-securely>p {
   margin-bottom: 6.4rem;
 }
 
@@ -688,7 +697,7 @@ a {
   margin-bottom: 0.4rem;
 }
 
-.calculate__header > input {
+.calculate__header>input {
   border: 0;
   border-bottom: 1px solid var(--color-grey-3);
   font-size: 2rem;
@@ -698,7 +707,7 @@ a {
   margin-bottom: 3rem;
 }
 
-.calculate__header > input::placeholder {
+.calculate__header>input::placeholder {
   color: black;
 }
 
@@ -722,22 +731,22 @@ a {
     padding: 0rem 2rem 5.5rem;
   }
 
-  .calculate__header > input {
+  .calculate__header>input {
     width: 100%;
   }
 
-  .calculate__header > .btn {
+  .calculate__header>.btn {
     width: 100%;
   }
 }
 
 @media screen and (min-width: 720px) {
-  .calculate__header > input:first-child {
+  .calculate__header>input:first-child {
     margin-right: 4.8rem;
     flex-grow: 1;
   }
 
-  .calculate__header > button {
+  .calculate__header>button {
     margin-left: 4.8rem;
   }
 }
@@ -746,12 +755,15 @@ a {
   .trade-securely {
     padding: 10rem 12rem 10rem;
   }
+
   .trade-securely h2 {
     width: 40ch;
   }
+
   .calculate {
     width: 100rem;
   }
+
   .calculate__header {
     padding-bottom: 5.5rem;
     display: flex;
@@ -759,7 +771,7 @@ a {
     background-color: var(--color-grey-7)
   }
 
-  .calculate__header > input {
+  .calculate__header>input {
     border: 0;
     border-bottom: 1px solid var(--color-grey-3);
     font-size: 2rem;
@@ -773,7 +785,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    
+
   }
 
   .currencies .card {
@@ -793,7 +805,7 @@ a {
   text-align: center;
 }
 
-.features > h2 {
+.features>h2 {
   margin: 0 auto;
   margin-bottom: 5rem;
 }
@@ -844,10 +856,12 @@ a {
   .features {
     padding: 10rem 0 10rem;
   }
-  .features > h2 {
+
+  .features>h2 {
     width: 30ch;
     margin-bottom: 10rem;
   }
+
   .features .banner--left {
     padding-left: 12rem;
     display: block;
@@ -901,7 +915,7 @@ a {
   margin-bottom: 2.5rem;
 }
 
-.mining-container__subscribe > input {
+.mining-container__subscribe>input {
   border: 0;
   border-bottom: 1px solid var(--color-grey-5);
   font-size: 2rem;
@@ -912,7 +926,7 @@ a {
   background-color: transparent;
 }
 
-.mining-container__subscribe > input::placeholder {
+.mining-container__subscribe>input::placeholder {
   color: var(--color-white);
 }
 
@@ -1025,6 +1039,7 @@ a {
 .payment-icon-container:first-child {
   margin-right: 2rem;
 }
+
 .payment-icon-container:last-child {
   margin-left: 2rem;
 }
