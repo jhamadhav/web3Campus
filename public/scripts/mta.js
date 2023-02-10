@@ -1,6 +1,8 @@
 let userDetails = null
 let mtaProxy = null
-
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 window.onload = async () => {
     mtaProxy = new MtaProxy()
     // document.getElementById("connect").addEventListener("click", connect);
@@ -15,19 +17,19 @@ window.onload = async () => {
         googleSignIn()
     })
     // document.getElementById("sign-out").addEventListener("click", signOut)
-    // firebase.auth().onAuthStateChanged((user) => {
-    //     if (!user) {
-    //         userDetails = undefined
-    //         console.log("user not signed in")
-    //         return
-    //     }
-    //     userDetails = {
-    //         "name": user["multiFactor"]["user"]["displayName"],
-    //         "email": user["multiFactor"]["user"]["email"],
-    //     }
-    //     console.log(userDetails)
-    //     document.getElementById("user-details").innerText = `Hi ${userDetails["name"]} 👋`
-    // })
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            userDetails = undefined
+            console.log("user not signed in")
+            return
+        }
+        userDetails = {
+            "name": user["multiFactor"]["user"]["displayName"],
+            "email": user["multiFactor"]["user"]["email"],
+        }
+        console.log(userDetails)
+        // document.getElementById("user-details").innerText = `Hi ${userDetails["name"]} 👋`
+    })
 }
 
 const connect = async () => {
@@ -36,11 +38,15 @@ const connect = async () => {
     console.log("on connect: account details");
     console.log(mtaProxy.account);
 
+    await sleep(1000);
     // map google mail to wallet address
     if (mtaProxy == null || userDetails == null || mtaProxy.account.address == '') return;
     let res = await mtaProxy.createRecord(userDetails.email, mtaProxy.account.address);
     console.log("on create: mapping done");
     console.log(res);
+
+    await sleep(2000)
+    window.location = "https://jhamadhav.com/web3Campus/index.html"
 }
 
 const create = async () => {
@@ -55,6 +61,7 @@ const create = async () => {
 const getAddressByMail = async () => {
     if (mtaProxy == null) return;
     let email = document.getElementById("by-mail-input").value;
+    console.log(email);
     let res = await mtaProxy.getRecordByMail(email);
     console.log(`get address by mail: ${email} `);
     console.log(res);
@@ -70,10 +77,11 @@ const getMailByAddress = async () => {
 
 // google login and log out
 
-const googleSignIn = () => {
+const googleSignIn = async () => {
     if (userDetails != null) {
         console.log("already signed in !!");
         console.log(userDetails);
+        await connect()
         return
     }
     let provider = new firebase.auth.GoogleAuthProvider();
@@ -83,7 +91,6 @@ const googleSignIn = () => {
             console.log("sign in successful")
             console.log("logging into metamask");
             await connect()
-            window.location = "https://jhamadhav.com/web3Campus/index.html"
         }).catch((error) = () => {
             console.log(error);
             console.log("sign in successful")
