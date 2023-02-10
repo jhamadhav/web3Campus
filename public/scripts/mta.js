@@ -5,9 +5,9 @@ const sleep = (ms) => {
 }
 window.onload = async () => {
     mtaProxy = new MtaProxy()
-    // document.getElementById("connect").addEventListener("click", connect);
+    document.getElementById("connect").addEventListener("click", connect);
 
-    // document.getElementById("create").addEventListener("click", create);
+    document.getElementById("create").addEventListener("click", create);
     // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-address-btn").addEventListener("click", getMailByAddress);
 
@@ -37,25 +37,20 @@ const connect = async () => {
     await mtaProxy.connect()
     console.log("on connect: account details");
     console.log(mtaProxy.account);
-
-    await sleep(1000);
-    // map google mail to wallet address
-    if (mtaProxy == null || userDetails == null || mtaProxy.account.address == '') return;
-    let res = await mtaProxy.createRecord(userDetails.email, mtaProxy.account.address);
-    console.log("on create: mapping done");
-    console.log(res);
-
-    await sleep(2000)
-    window.location = "https://jhamadhav.com/web3Campus/index.html"
 }
 
 const create = async () => {
     if (mtaProxy == null) return;
-    let email = document.getElementById("mail-input").value;
-    let address = document.getElementById("address-input").value;
+    let email = userDetails.email
+    let address = mtaProxy.account.address;
     let res = await mtaProxy.createRecord(email, address);
     console.log("on create: ");
     console.log(res);
+    console.log(await mtaProxy.getRecordByMail(email));
+
+    console.log("sleep");
+    await sleep(5000)
+    window.location = "https://jhamadhav.com/web3Campus/index.html"
 }
 
 const getAddressByMail = async () => {
@@ -81,7 +76,6 @@ const googleSignIn = async () => {
     if (userDetails != null) {
         console.log("already signed in !!");
         console.log(userDetails);
-        await connect()
         return
     }
     let provider = new firebase.auth.GoogleAuthProvider();
@@ -90,7 +84,6 @@ const googleSignIn = async () => {
         .then(async (result) => {
             console.log("sign in successful")
             console.log("logging into metamask");
-            await connect()
         }).catch((error) = () => {
             console.log(error);
             console.log("sign in successful")
