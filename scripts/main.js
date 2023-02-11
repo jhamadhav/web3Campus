@@ -17,7 +17,9 @@ window.onload = async () => {
         await getAppByInstitute("rcoem");
     }
     document.getElementById("showYour").onclick = async () => {
+        startLoad()
         await getYourApplication();
+        endLoad()
     }
 
     document.getElementById("create").addEventListener("click", create);
