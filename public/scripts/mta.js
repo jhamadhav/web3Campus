@@ -6,19 +6,55 @@ const sleep = (ms) => {
 window.onload = async () => {
     mtaProxy = new MtaProxy()
     document.getElementById("connect").addEventListener("click", async () => {
+        Toastify({
+            text: "Signing in your Meta-mask wallet !!",
+        }).showToast();
         await connect()
+        await sleep(1000)
+        Toastify({
+            text: "Meta-mask: done",
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
     });
 
     document.getElementById("create").addEventListener("click", async () => {
+        Toastify({
+            text: "Mapping gmail -> Meta-mask wallet",
+        }).showToast();
         await create()
+        Toastify({
+            text: "Mapping: done",
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
+
+        Toastify({
+            text: "Redirecting to dashboard !",
+        }).showToast();
+        await sleep(1000)
+        window.location = "https://jhamadhav.com/web3Campus/index.html"
     });
     // document.getElementById("by-mail-btn").addEventListener("click", getAddressByMail);
     // document.getElementById("by-address-btn").addEventListener("click", getMailByAddress);
 
     console.log("Firebase loaded")
     document.getElementById("sign-in").addEventListener("click", async () => {
+        Toastify({
+            text: "Signing in your Google account",
+        }).showToast();
+
         console.log("hi");
         googleSignIn()
+        await sleep(1000)
+        Toastify({
+            text: "Google account: done",
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
     })
     // document.getElementById("sign-out").addEventListener("click", signOut)
     firebase.auth().onAuthStateChanged((user) => {
@@ -51,10 +87,6 @@ const create = async () => {
     console.log("on create: ");
     console.log(res);
     console.log(await mtaProxy.getRecordByMail(email));
-
-    console.log("sleep");
-    await sleep(5000)
-    window.location = "https://jhamadhav.com/web3Campus/index.html"
 }
 
 const getAddressByMail = async () => {
