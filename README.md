@@ -2,9 +2,7 @@
 
 <div align="center">
 <p style="width:650px; align:center; text-align:center;">
-<a href="https://youtu.be/YQYYK2wRRPM">
 <img src="./assests/demo/main-page.png" style="width:650px;"> <br>
-</a>
 Empowering students and faculty with a secure, transparent, and decentralized 'campus formal communication' solution built on Web3 technology.
 </p>
 </div>
@@ -26,7 +24,7 @@ Issues could be because of the following:
 - delays between follow ups 
 - or many other
 
-our approach is to create a decentralized scalable web solution for teachers and students to upload, review and remark the formal applications using.
+our approach is to create a decentralized scalable web solution for teachers and students to upload, review and remark the formal applications.
 <br>
 It utilizes the benefits of blockchain to create a platform for transparent and open formal application reviewing. Accompanied with user friendly platform for users to engage with blockchain on a regular basis. 
 
@@ -102,6 +100,17 @@ We are using IPFS/Filecoin to store the uploaded file in a decentralized manner.
 <div align="center">
 <img src="./public/screenshots/Screenshot (288).png" style="width:650px;"> <br>
 Added recipients can add/edit remarks
+</div>
+
+# Video demo
+
+<div align="center">
+<p style="width:650px; align:center; text-align:center;">
+<a href="https://www.youtube.com/watch?v=mlOQqTeKIxw">
+<img src="./assests/demo/system-demo-yt.jpg" style="width:650px;">
+</a>
+<br>
+</p>
 </div>
 
 # Technologies
